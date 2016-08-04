@@ -1,0 +1,13 @@
+truncate table bbpay_app_instance;
+truncate table bbpay_app_stat;
+truncate table bbpay_biz_device_stat;
+trimcate table bbpay_biz_channel_stat;
+truncate table bbpay_biz_instance;
+truncate table bbpay_biz_province_stat;
+truncate table bbpay_biz_stat;
+truncate table bbpay_block;
+truncate table bbpay_channel_stat;
+truncate table bbpay_device;
+truncate table bbpay_device_info;
+truncate table bbpay_device_stat;
+truncate table bbpay_order;

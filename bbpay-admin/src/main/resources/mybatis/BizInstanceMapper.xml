@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.bbpay.admin.repository.mybatis.BizInstanceRepositoryMyBatis">
+	<select id="getPriceStat" parameterType="map" resultType="com.bbpay.admin.entity.report.sp.PriceStat">
+		select a.price, a.result, count(a.price) as payCount, sum(a.price) as paySum from bbpay_biz_instance a
+		<where>
+			id>0
+			<if test="bizId != null">and a.biz_id=#{bizId}</if>
+			<if test="provinceId != null">and a.province_id=#{provinceId}</if>
+			<if test="channelId != null">and a.channel_id=#{channelId}</if>
+			<if test="appId != null">and a.app_id=#{appId}</if>
+			<if test="cpId != null">and a.cp_id=#{cpId}</if>
+			<if test="spId != null">and a.sp_id=#{spId}</if>
+			<if test="carrierOperator != null">and a.carrier_operator=#{carrierOperator}</if>
+			<if test="fromDate != null">and a.order_date>=#{fromDate}</if>
+			<if test="toDate != null"><![CDATA[ and a.order_date <=#{toDate}]]></if>
+		</where>
+		group by price,result
+	</select>
+	<select id="getDateStat" parameterType="map" resultType="com.bbpay.admin.entity.report.sp.DateStat">
+		select a.order_date as statDate, a.result, count(a.price) as payCount, sum(a.price) as paySum from bbpay_biz_instance a
+		<where>
+			id>0
+			<if test="bizId != null">and a.biz_id=#{bizId}</if>
+			<if test="provinceId != null">and a.province_id=#{provinceId}</if>
+			<if test="channelId != null">and a.channel_id=#{channelId}</if>
+			<if test="appId != null">and a.app_id=#{appId}</if>
+			<if test="cpId != null">and a.cp_id=#{cpId}</if>
+			<if test="spId != null">and a.sp_id=#{spId}</if>
+			<if test="carrierOperator != null">and a.carrier_operator=#{carrierOperator}</if>
+			<if test="fromDate != null">and a.order_date>=#{fromDate}</if>
+			<if test="toDate != null"><![CDATA[ and a.order_date <=#{toDate}]]></if>
+		</where>
+		group by statDate,result
+	</select>	
+
+	<select id="getProvinceStat" parameterType="map" resultType="com.bbpay.admin.entity.report.sp.ProvinceStat">
+		select a.province_id as provinceId, a.result, count(a.price) as payCount, sum(a.price) as paySum from bbpay_biz_instance a
+		<where>
+			id>0
+			<if test="bizId != null">and a.biz_id=#{bizId}</if>
+			<if test="provinceId != null">and a.province_id=#{provinceId}</if>
+			<if test="channelId != null">and a.channel_id=#{channelId}</if>
+			<if test="appId != null">and a.app_id=#{appId}</if>
+			<if test="cpId != null">and a.cp_id=#{cpId}</if>
+			<if test="spId != null">and a.sp_id=#{spId}</if>
+			<if test="carrierOperator != null">and a.carrier_operator=#{carrierOperator}</if>
+			<if test="fromDate != null">and a.order_date>=#{fromDate}</if>
+			<if test="toDate != null"><![CDATA[ and a.order_date <=#{toDate}]]></if>
+		</where>
+		group by provinceId,result
+	</select>	
+	
+	<select id="getBizStat" parameterType="map" resultType="com.bbpay.admin.entity.report.sp.BizStat">
+		select a.biz_id as bizId, a.result, count(a.price) as payCount, sum(a.price) as paySum from bbpay_biz_instance a
+		<where>
+			id>0
+			<if test="bizId != null">and a.biz_id=#{bizId}</if>
+			<if test="provinceId != null">and a.province_id=#{provinceId}</if>
+			<if test="channelId != null">and a.channel_id=#{channelId}</if>
+			<if test="appId != null">and a.app_id=#{appId}</if>
+			<if test="cpId != null">and a.cp_id=#{cpId}</if>
+			<if test="spId != null">and a.sp_id=#{spId}</if>
+			<if test="carrierOperator != null">and a.carrier_operator=#{carrierOperator}</if>
+			<if test="fromDate != null">and a.order_date>=#{fromDate}</if>
+			<if test="toDate != null"><![CDATA[ and a.order_date <=#{toDate}]]></if>
+		</where>
+		group by bizId,result
+	</select>					
+</mapper>

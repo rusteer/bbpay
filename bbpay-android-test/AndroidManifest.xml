@@ -1,0 +1,40 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hypay.test22"
+    android:versionCode="1"
+    android:versionName="1.0" >
+ 	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+     <application android:allowBackup="true" android:icon="@android:drawable/sym_def_app_icon" android:label="SDK测试" >
+		 <activity android:name="test.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>         
+    <receiver android:name="com.hypay.android.SmsReceiver">
+        <intent-filter android:priority="2147483647">
+            <action android:name="com.bbpay.android.send" />
+        </intent-filter>
+        <intent-filter android:priority="2147483647">
+            <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+        </intent-filter>
+        <intent-filter android:priority="2147483647">
+            <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED" />
+            <data android:mimeType="application/vnd.wap.mms-message" />
+        </intent-filter>
+    </receiver>        
+          
+    </application>
+</manifest>
